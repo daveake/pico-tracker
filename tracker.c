@@ -13,7 +13,6 @@
 
 // Tracker configuration
 
-
 // Variables
 struct TGPS GPS;
 
@@ -74,7 +73,7 @@ void check_host(void)
 	static unsigned int Length=0;
 	char Character;
 
-	while (uart_readable(uart0))
+	while (uart_is_readable(uart0))
 	{
 		char Character;
 		

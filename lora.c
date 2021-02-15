@@ -392,17 +392,17 @@ void setup_lora(float Frequency, int Mode, char *Callsign)
 
     // SPI0 at 0.5MHz.
     spi_init(SPI_PORT, 500*1000);
-    gpio_funcsel(PIN_MISO, GPIO_FUNC_SPI);
-    gpio_funcsel(PIN_CS,   GPIO_FUNC_PROC);
-    gpio_funcsel(PIN_SCK,  GPIO_FUNC_SPI);
-    gpio_funcsel(PIN_MOSI, GPIO_FUNC_SPI);
+    gpio_set_function(PIN_MISO, GPIO_FUNC_SPI);
+    gpio_init(PIN_CS);
+    gpio_set_function(PIN_SCK,  GPIO_FUNC_SPI);
+    gpio_set_function(PIN_MOSI, GPIO_FUNC_SPI);
 
     // Chip select is active-low, so we'll initialise it to a driven-high state
-    gpio_dir(PIN_CS, GPIO_OUT);
+    gpio_set_dir(PIN_CS, GPIO_OUT);
     gpio_put(PIN_CS, 1);
 	
 	// DIO0 is input
-    gpio_dir(PIN_DIO0, GPIO_IN);
+    gpio_set_dir(PIN_DIO0, GPIO_IN);
 	
 	SetupRFM98(Frequency, Mode);
 	
