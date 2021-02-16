@@ -14,7 +14,7 @@ void setup_adc(void)
 
     adc_gpio_init(29);				// Set battery sense high impedance
 	
-	adc_enable_temp_sensor(1);		// Enable temperature sense
+	adc_set_temp_sensor_enabled(1);		// Enable temperature sense
 	
 	printf("OK\n");
 }
@@ -30,7 +30,7 @@ void check_adc(struct TGPS *GPS)
 		
 
 		// Select ADC input 4 for temperature
-		adc_input_select(4);
+		adc_select_input(4);
 		raw = adc_read();
 		conversion_factor = 3.3f / (1 << 12);
 		voltage = raw * conversion_factor;
@@ -49,7 +49,8 @@ void check_adc(struct TGPS *GPS)
 		// printf("\nINTERNAL = %.1f\n", GPS->InternalTemperature);
 
 		// Select ADC input 3 (GPIO29) for battery
-		adc_input_select(3);
+		adc_select_input(3);
+		
 
         // 12-bit conversion, assume max value == ADC_VREF == 3.3 V, and potential divider is 3:1
 		

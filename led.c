@@ -13,8 +13,8 @@ void setup_led(void)
 {
 	// Set up our sole LED
 	printf("  - Init LED  - ");
-	gpio_funcsel(LED_PIN, GPIO_FUNC_PROC);
-	gpio_dir(LED_PIN, GPIO_OUT);
+	gpio_init(LED_PIN);
+	gpio_set_dir(LED_PIN, GPIO_OUT);
 	printf("OK\n");
 }
 

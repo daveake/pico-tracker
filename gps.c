@@ -212,8 +212,8 @@ void setup_gps(void)
 
 	// Initialise UART 1
 	uart_init(uart1, 9600);
-	gpio_funcsel(4, GPIO_FUNC_UART);
-	gpio_funcsel(5, GPIO_FUNC_UART);
+	gpio_set_function(4, GPIO_FUNC_UART);
+	gpio_set_function(5, GPIO_FUNC_UART);
 
 	printf("OK\n");
 }
@@ -227,7 +227,7 @@ void check_gps(struct TGPS *GPS)
 	
 	// SetFlightMode();
 
-	while (uart_readable(uart1))
+	while (uart_is_readable(uart1))
 	{
 		char Character;
 		

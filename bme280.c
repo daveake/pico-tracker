@@ -140,8 +140,8 @@ void setup_bme(void)
 
     // This example will use I2C0 on GPIO4 (SDA) and GPIO5 (SCL) running at 400kHz.
     i2c_init(I2C_PORT, 400*1000);
-    gpio_funcsel(12, GPIO_FUNC_I2C);
-    gpio_funcsel(13, GPIO_FUNC_I2C);
+    gpio_set_function(12, GPIO_FUNC_I2C);
+    gpio_set_function(13, GPIO_FUNC_I2C);
     gpio_pull_up(12);
     gpio_pull_up(13);
 	
